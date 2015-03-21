@@ -9,11 +9,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Vincent Free on 21-3-2015.
  */
 public class SelToCucSteps {
+    //System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
     private final WebDriver driver = new ChromeDriver();
 
     @Given("^I am on the Google search page$")
@@ -39,7 +41,7 @@ public class SelToCucSteps {
                 return d.getTitle().toLowerCase().startsWith(title);
             }
         });
-        //assertThat(driver.getTitle(), startsWith(title));
+        //assertThat(driver.getTitle().startsWith(title));
     }
         @After()
         public void closeBrowser(){
