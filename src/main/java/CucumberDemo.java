@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CucumberDemo {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\a591220\\Documents\\Webdrivers\\chromedriver.exe");
-       /* WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         // And now use this to visit Google
         driver.get("http://www.google.com");
         // Alternatively the same thing can be done like this
@@ -43,6 +43,6 @@ public class CucumberDemo {
         driver.get("http://www.tweakers.net");
 
         //Close the browser
-        driver.quit();*/
+        driver.quit();
     }
 }
