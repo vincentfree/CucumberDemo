@@ -1,25 +1,28 @@
-import cucumber.api.PendingException;
+package com.atos.cucumberdemo.step;
+
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.junit.Assert.assertThat;
 
 /**
  * Created by Vincent Free on 21-3-2015.
  */
 public class SelToCucSteps {
-    //System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
-    private final WebDriver driver = new ChromeDriver();
+
+    private final WebDriver driver = new FirefoxDriver();
+   //System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vincent\\Downloads\\chromedriver_win32\\chromedriver.exe");
 
     @Given("^I am on the Google search page$")
     public void I_visit_google(){
+        //WebDriver driver = new ChromeDriver();
+        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vincent\\Downloads\\chromedriver_win32\\chromedriver.exe");
         driver.get("http://www.google.com");
 
     }
@@ -47,4 +50,24 @@ public class SelToCucSteps {
         public void closeBrowser(){
             driver.quit();
         }
+
+    @When("^the page title should start with this \"([^\"]*)\"$")
+    public void the_page_title_should_start_with_this(final String searchQuery) {
+            (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+                @Override
+                public Boolean apply(WebDriver d) {
+                    return d.getTitle().toLowerCase().startsWith(searchQuery);
+                }
+            });
+
     }
+
+    @When("^I search for this\"([^\"]*)\"$")
+    public void I_search_for_this(String searchQuery) {
+        WebElement element = driver.findElement(By.name("q"));
+        //Enter something to search for
+        element.sendKeys(searchQuery);
+        //Submit the form. Webdriver finds the form from element
+        element.submit();
+    }
+}

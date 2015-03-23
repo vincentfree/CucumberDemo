@@ -5,15 +5,14 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CucumberDemo {
-    public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\a591220\\Documents\\Webdrivers\\chromedriver.exe");
-        //WebDriver driver = new RemoteWebDriver("http://127.0.0.1:9515", DesiredCapabilities.chrome());
-        WebDriver driver = new ChromeDriver();
+    public static void main(String[] args) {
+        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vincent\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        WebDriver driver = new FirefoxDriver();
         // And now use this to visit Google
         driver.get("http://www.google.com");
         // Alternatively the same thing can be done like this
