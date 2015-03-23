@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CucumberDemo {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\a591220\\Documents\\Webdrivers\\chromedriver.exe");
+        //WebDriver driver = new RemoteWebDriver("http://127.0.0.1:9515", DesiredCapabilities.chrome());
         WebDriver driver = new ChromeDriver();
         // And now use this to visit Google
         driver.get("http://www.google.com");
