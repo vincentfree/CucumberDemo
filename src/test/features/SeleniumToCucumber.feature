@@ -16,3 +16,4 @@ Feature: Find the cheese
     |cheese       |
     |rose         |
     |bears        |
+    |aapje        |
