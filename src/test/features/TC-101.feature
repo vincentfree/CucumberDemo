@@ -16,3 +16,6 @@ Feature: TC-101
     Then I am logged in
 
   Scenario: Log in with wrong credentials
+    Given I am on the adactin site
+    When I log in with the wrong credentials
+    Then I should get a message
