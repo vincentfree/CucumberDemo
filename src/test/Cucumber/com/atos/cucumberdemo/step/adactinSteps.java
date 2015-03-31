@@ -1,23 +1,14 @@
 package com.atos.cucumberdemo.step;
 
 
-import cucumber.api.DataTable;
-import cucumber.api.PendingException;
-import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import javafx.beans.binding.Bindings;
-import org.apache.bcel.generic.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -95,4 +86,41 @@ public class adactinSteps {
        System.out.println("is goed");
     }
 
+    @When("^I set the location to \"([^\"]*)\"$")
+    public void I_set_the_location_to(String location) throws Throwable {
+        WebElement element = webDriver.findElement(By.id("location"));
+        element.click();
+        //element.findElement(By.xpath("//select[@id='location']/option[text()='"+location+"']")).click();
+        element.findElement(By.id("location")).click();
+        element.sendKeys(location);
+    }
+
+    @And("^I select Hotel \"([^\"]*)\"$")
+    public void I_select_Hotel(String hotels) throws Throwable {
+        WebElement element = webDriver.findElement(By.id("hotels"));
+        element.click();
+        element.sendKeys(hotels);
+    }
+
+    @And("^I select Room type \"([^\"]*)\"$")
+    public void I_select_Room_type(String room) throws Throwable {
+        WebElement element = webDriver.findElement(By.id("room_type"));
+        element.click();
+        element.sendKeys(room);
+    }
+
+    @And("^I select the number of rooms \"([^\"]*)\"$")
+    public void I_select_the_number_of_rooms(String room) throws Throwable {
+        WebElement element = webDriver.findElement(By.id("room_nos"));
+        element.click();
+        element.sendKeys(room);
+    }
+
+    @And("^I select the amount of adults \"([^\"]*)\"$")
+    public void I_select_the_amount_of_adults(String adult) throws Throwable {
+        WebElement element = webDriver.findElement(By.id("adult_room"));
+        element.click();
+        element.sendKeys(adult);
+
+    }
 }
