@@ -5,10 +5,12 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.commons.lang3.time.DateUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 /**
@@ -72,12 +74,22 @@ public class adactinSteps {
     }*/
 
     @And("^the day that I check in is \"([^\"]*)\" days from now$")
-    public void the_day_that_I_check_in_is_days_from_now(String arg1) throws Throwable {
-
+    public void the_day_that_I_check_in_is_days_from_now(int days) throws Throwable {
+        WebElement element = webDriver.findElement(By.id("datepick_in"));
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String Sourcedate = webDriver.findElement(By.xpath("//input[@id='datepick_in']")).getAttribute("value");
+        System.out.println("test: ["+Sourcedate+"]");
+        java.util.Date mydate = format.parse(Sourcedate);
+        System.out.println(mydate);
+        mydate = DateUtils.addDays(mydate, days);
+        String test = new SimpleDateFormat("dd/MM/yyyy").format(mydate);
+        System.out.println(test);
+        //date = element.getText();
+        element.sendKeys(mydate.toString());
     }
 
     @And("^the day that I check out is \"([^\"]*)\" days from now$")
-    public void the_day_that_I_check_out_is_days_from_now(String arg1) throws Throwable {
+    public void the_day_that_I_check_out_is_days_from_now(String days) throws Throwable {
 
     }
 
