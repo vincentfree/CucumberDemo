@@ -1,7 +1,6 @@
 package com.atos.cucumberdemo.step;
 
 
-import com.sun.xml.internal.bind.v2.TODO;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,15 +9,15 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
-import org.junit.Test;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by VincentFree on 27-3-2015.
@@ -101,9 +100,11 @@ public class adactinSteps {
     @Then("^the search results in an error message$")
     public void the_search_results_in_an_error_message() throws Throwable {
         webDriver.findElement(By.id("Submit")).click();
-        WebElement element = webDriver.findElement(By.id("checkout_span"));
-        //TODO
-        assertEquals("Check-Out Date shall be after than Check-In Date",element.getAttribute("value"));
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkin_span")));
+        WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkout_span")));
+        assertEquals("Check-In Date shall be before than Check-Out Date", element.getText());
+        assertEquals("Check-Out Date shall be after than Check-In Date",element1.getText());
     }
 
     @When("^I set the location to \"([^\"]*)\"$")
@@ -132,7 +133,7 @@ public class adactinSteps {
     @And("^I select the number of rooms \"([^\"]*)\"$")
     public void I_select_the_number_of_rooms(String room) throws Throwable {
         WebElement element = webDriver.findElement(By.id("room_nos"));
-        if (element.getAttribute("value").contains("One")|| element.getAttribute("value").contains("1")){
+        if (room == "1" && (element.getAttribute("value").contains("One")|| element.getAttribute("value").contains("1"))){
 
         }
         else {
@@ -144,7 +145,7 @@ public class adactinSteps {
     @And("^I select the amount of adults \"([^\"]*)\"$")
     public void I_select_the_amount_of_adults(String adult) throws Throwable {
         WebElement element = webDriver.findElement(By.id("adult_room"));
-        if (element.getAttribute("value").contains("One")|| element.getAttribute("value").contains("1")){
+        if (adult == "1" && (element.getAttribute("value").contains("One")|| element.getAttribute("value").contains("1"))){
 
         }
         else {

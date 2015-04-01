@@ -18,7 +18,7 @@ Feature: TC-102
   Room type: standard
   No-of-rooms:1
   Check-in-date: today + 7 date
-  Checkout date:today+5 date
+  Checkout date:today +5 date
   System should report an error message.
 
 Scenario Outline: verify whether the check-out date field accepts a later date than check-in date
@@ -34,6 +34,7 @@ Scenario Outline: verify whether the check-out date field accepts a later date t
   And the day that I check out is "5" days from now
   Then the search results in an error message
 Examples:
-  | Location | Hotels    | Roomtype | NumberRooms | AdultsPerRoom |
-  |Sydney    |Hotel Creek|Standard  |1            |1              |
+  | Location | Hotels       | Roomtype | NumberRooms | AdultsPerRoom |
+  |Sydney    |Hotel Creek   |Standard  |1            |1              |
+  |London    |Hotel Sunshine|Double    |2            |3              |
 
