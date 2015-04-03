@@ -1,7 +1,6 @@
 package com.atos.cucumberdemo.step;
 
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,7 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -27,7 +27,8 @@ import static org.junit.Assert.assertEquals;
 
 public class adactinSteps {
     private final WebDriver webDriver;
-    private Map<String,String> table;
+    private List<String> results = new ArrayList<String>();
+
     public adactinSteps(SharedDriver webDriver) {
         this.webDriver = webDriver;
         //this.driver = new driver;
@@ -85,6 +86,7 @@ public class adactinSteps {
         String inputdate = new SimpleDateFormat("dd/MM/yyyy").format(mydate);
         element.clear();
         element.sendKeys(inputdate);
+        this.results.add(inputdate);
     }
 
     @And("^the day that I check out is \"([^\"]*)\" days from now$")
@@ -97,6 +99,7 @@ public class adactinSteps {
         String inputdate = new SimpleDateFormat("dd/MM/yyyy").format(mydate);
         element.clear();
         element.sendKeys(inputdate);
+        this.results.add(inputdate);
     }
 
     @Then("^the search results in an error message$")
@@ -106,11 +109,12 @@ public class adactinSteps {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkin_span")));
         WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkout_span")));
         assertEquals("Check-In Date shall be before than Check-Out Date", element.getText());
-        assertEquals("Check-Out Date shall be after than Check-In Date",element1.getText());
+        assertEquals("Check-Out Date shall be after than Check-In Date", element1.getText());
     }
 
     @When("^I set the location to \"([^\"]*)\"$")
     public void I_set_the_location_to(String location) throws Throwable {
+        this.results.add(location);
         WebElement element = webDriver.findElement(By.id("location"));
         element.click();
         //element.findElement(By.xpath("//select[@id='location']/option[text()='"+location+"']")).click();
@@ -120,6 +124,7 @@ public class adactinSteps {
 
     @And("^I select Hotel \"([^\"]*)\"$")
     public void I_select_Hotel(String hotels) throws Throwable {
+        this.results.add(hotels);
         WebElement element = webDriver.findElement(By.id("hotels"));
         element.click();
         element.sendKeys(hotels);
@@ -127,6 +132,7 @@ public class adactinSteps {
 
     @And("^I select Room type \"([^\"]*)\"$")
     public void I_select_Room_type(String room) throws Throwable {
+        this.results.add(room);
         WebElement element = webDriver.findElement(By.id("room_type"));
         element.click();
         element.sendKeys(room);
@@ -134,9 +140,11 @@ public class adactinSteps {
 
     @And("^I select the number of rooms \"([^\"]*)\"$")
     public void I_select_the_number_of_rooms(String room) throws Throwable {
+        this.results.add(room+" Rooms");
         WebElement element = webDriver.findElement(By.id("room_nos"));
-        if (room == "1" && (element.getAttribute("value").contains("One")|| element.getAttribute("value").contains("1"))){
+        if (room.equals("1") && (element.getAttribute("value").contains("One") || element.getAttribute("value").contains("1"))) {
 
+            System.out.println("number of rooms would be: "+room);
         }
         else {
             element.click();
@@ -146,13 +154,26 @@ public class adactinSteps {
 
     @And("^I select the amount of adults \"([^\"]*)\"$")
     public void I_select_the_amount_of_adults(String adult) throws Throwable {
+        //this.results.add(adult);
         WebElement element = webDriver.findElement(By.id("adult_room"));
-        if (adult == "1" && (element.getAttribute("value").contains("One")|| element.getAttribute("value").contains("1"))){
+        if (adult.equals("1") && (element.getAttribute("value").contains("One") || element.getAttribute("value").contains("1"))) {
 
-        }
-        else {
+            System.out.println("number of adults: "+adult);
+        } else {
             element.click();
             element.sendKeys(adult);
+        }
+    }
+
+    @And("^I select the amount of children \"([^\"]*)\"$")
+    public void I_select_the_amount_of_children(String children) throws Throwable {
+        //this.results.add(children);
+        WebElement element = webDriver.findElement(By.id("adult_room"));
+        if (children == "0") {
+
+        } else {
+            element.click();
+            element.sendKeys(children);
         }
     }
 
@@ -162,5 +183,20 @@ public class adactinSteps {
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkin_span")));
         assertEquals("Check-In Date should be either Today or Later Date", element.getText());
+    }
+
+
+    @Then("^The right hotel should be shown$")
+    public void The_right_hotel_should_be_shown() throws Throwable {
+        webDriver.findElement(By.id("Submit")).click();
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        WebElement element;
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("select_form")));
+        for (Object object : results) {
+            element = webDriver.findElement(By.xpath("//input[@value='" + object.toString() + "']"));
+            System.out.println(element.getAttribute("value"));
+            assertEquals(element.getAttribute("value").toLowerCase(),object.toString().toLowerCase());
+
+        }
     }
 }
