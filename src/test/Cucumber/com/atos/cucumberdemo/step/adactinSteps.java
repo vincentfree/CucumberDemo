@@ -1,6 +1,7 @@
 package com.atos.cucumberdemo.step;
 
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -21,7 +22,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by VincentFree on 27-3-2015.
+ * Created by Vincent Free on 27-3-2015.
  */
 
 
@@ -198,5 +199,11 @@ public class adactinSteps {
             assertEquals(element.getAttribute("value").toLowerCase(),object.toString().toLowerCase());
 
         }
+    }
+    //TODO make price function
+    @And("^The price should be correct$")
+    public void The_price_should_be_correct() throws Throwable {
+        // Express the Regexp above with the code you wish you had
+        throw new PendingException();
     }
 }

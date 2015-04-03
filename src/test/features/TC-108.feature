@@ -1,10 +1,7 @@
-Feature: TC-104
+Feature: TC-108
 
-  TC-104/105/106/107
-
-  checks voor 104 t/m 107 worden hier gedaan
-
-  To verify whether locations in Select Hotel page are displayed according to the location selected in Search Hotel
+  TC-108
+  To verify whether the total price (excl.GST) is calculated as “price per night * no. of nights* no of rooms”.
   1. Launch hotel reservation application using URL as in test data.
   2. Login to the application using username and password as in test data.
   3. Select location as in test data.
@@ -15,21 +12,22 @@ Feature: TC-104
   8. Select No-of-adults as in test data.
   9. Select No-of-children as in test data.
   10. Click on Search button.
-  11. Verify that hotel displayed is the same as selected in search Hotel form.
+  11. Select the hotel and click on continue button
+  12. Verify that total-price(excl.GST) is being calculated as (price-per-night*no-of-nights*no-of-rooms)
   URL: http://adactin.com/HotelApp/index.php
   User:{test username}
   Password:{test password}
   Location: Sydney
   Hotel: Hotel Creek
   Room type: standard
-  No-of-rooms:1
+  No-of-rooms:2
   Check-in-date: today’s date
-  Checko-ut-date:today+1 date
+  Check-out-date:today+1 date
   No-of-adults:1
   No-of-children: 0
-  Location displayed in Select Hotel should be the same as location selected in search hotel form.
+  Total price =125*1*2=250$
 
-  Scenario: verify whether locations in Select Hotel page are displayed
+  Scenario: verify the price
     Given I am on the adactin site
     And I log in with my credentials
     And I am logged in
@@ -42,3 +40,4 @@ Feature: TC-104
     And the day that I check in is "0" days from now
     And the day that I check out is "1" days from now
     Then The right hotel should be shown
+    And The price should be correct
