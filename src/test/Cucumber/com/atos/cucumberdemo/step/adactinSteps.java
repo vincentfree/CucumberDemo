@@ -1,6 +1,7 @@
 package com.atos.cucumberdemo.step;
 
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -34,6 +35,7 @@ public class adactinSteps {
 
     @Given("^I am on the adactin site$")
     public void I_am_on_the_adactin_site() throws Throwable {
+        webDriver.manage().window().maximize();
         webDriver.get("http://adactin.com/HotelAppBuild2/");
     }
 
@@ -152,5 +154,13 @@ public class adactinSteps {
             element.click();
             element.sendKeys(adult);
         }
+    }
+
+    @Then("^The system should report an error message ‘Enter Valid dates’$")
+    public void The_system_should_report_an_error_message_Enter_Valid_dates() throws Throwable {
+        webDriver.findElement(By.id("Submit")).click();
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkin_span")));
+        assertEquals("Check-In Date should be either Today or Later Date", element.getText());
     }
 }
