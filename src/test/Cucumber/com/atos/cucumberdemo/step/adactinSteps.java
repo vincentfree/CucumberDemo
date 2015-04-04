@@ -145,7 +145,7 @@ public class adactinSteps {
         WebElement element = webDriver.findElement(By.id("room_nos"));
         if (room.equals("1") && (element.getAttribute("value").contains("One") || element.getAttribute("value").contains("1"))) {
 
-            System.out.println("number of rooms would be: "+room);
+            //System.out.println("number of rooms would be: "+room);
         }
         else {
             element.click();
@@ -159,7 +159,7 @@ public class adactinSteps {
         WebElement element = webDriver.findElement(By.id("adult_room"));
         if (adult.equals("1") && (element.getAttribute("value").contains("One") || element.getAttribute("value").contains("1"))) {
 
-            System.out.println("number of adults: "+adult);
+            //System.out.println("number of adults: "+adult);
         } else {
             element.click();
             element.sendKeys(adult);
