@@ -27,3 +27,19 @@ Feature: TC-109
   No-of-adults:1
   No-of-children:0
   User should logout from the application.
+
+  Scenario: User should logout from the application.
+    Given I am on the adactin site
+    And I log in with my credentials
+    And I am logged in
+    When I set the location to "Sydney"
+    And I select Hotel "Hotel Creek"
+    And I select Room type "Standard"
+    And I select the number of rooms "2"
+    And I select the amount of adults "1"
+    And I select the amount of children "0"
+    And the day that I check in is "0" days from now
+    And the day that I check out is "1" days from now
+    Then The right hotel should be shown
+    And The price should be correct
+    And I want to logout and verify that I am logged out

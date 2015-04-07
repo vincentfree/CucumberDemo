@@ -211,4 +211,12 @@ public class adactinSteps {
         assertEquals("AUD $ " + price + "", element.getAttribute("value"));
         System.out.println(element.getAttribute("value"));
     }
+
+    @And("^I want to logout and verify that I am logged out$")
+    public void I_want_to_logout_and_verify_that_I_am_logged_out() throws Throwable {
+     WebElement element = webDriver.findElement(By.xpath("//a[@href='Logout.php']"));
+        element.click();
+        element = webDriver.findElement(By.className("reg_success"));
+        assertEquals("You have successfully logged out. [Click here to login again]", element.getText());
+    }
 }
