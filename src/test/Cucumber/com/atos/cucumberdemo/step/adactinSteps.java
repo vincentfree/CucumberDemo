@@ -1,7 +1,6 @@
 package com.atos.cucumberdemo.step;
 
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -29,6 +28,8 @@ import static org.junit.Assert.assertEquals;
 public class adactinSteps {
     private final WebDriver webDriver;
     private List<String> results = new ArrayList<String>();
+    private int adults;
+    private int no_rooms;
 
     public adactinSteps(SharedDriver webDriver) {
         this.webDriver = webDriver;
@@ -142,6 +143,7 @@ public class adactinSteps {
     @And("^I select the number of rooms \"([^\"]*)\"$")
     public void I_select_the_number_of_rooms(String room) throws Throwable {
         this.results.add(room+" Rooms");
+        this.no_rooms = Integer.parseInt(room);
         WebElement element = webDriver.findElement(By.id("room_nos"));
         if (room.equals("1") && (element.getAttribute("value").contains("One") || element.getAttribute("value").contains("1"))) {
 
@@ -156,6 +158,7 @@ public class adactinSteps {
     @And("^I select the amount of adults \"([^\"]*)\"$")
     public void I_select_the_amount_of_adults(String adult) throws Throwable {
         //this.results.add(adult);
+        this.adults = Integer.parseInt(adult);
         WebElement element = webDriver.findElement(By.id("adult_room"));
         if (adult.equals("1") && (element.getAttribute("value").contains("One") || element.getAttribute("value").contains("1"))) {
 
@@ -203,7 +206,9 @@ public class adactinSteps {
     //TODO make price function
     @And("^The price should be correct$")
     public void The_price_should_be_correct() throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        throw new PendingException();
+        int price = 125*adults*no_rooms;
+        WebElement element = webDriver.findElement(By.id("total_price_0"));
+        assertEquals("AUD $ " + price + "", element.getAttribute("value"));
+        System.out.println(element.getAttribute("value"));
     }
 }
