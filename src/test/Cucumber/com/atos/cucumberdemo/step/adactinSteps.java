@@ -66,7 +66,7 @@ public class adactinSteps {
     @Then("^I should get a message$")
     public void I_should_get_a_message() {
         WebElement element = webDriver.findElement(By.className("auth_error"));
-        String InvalidLogin = "Invalid Login Details";
+        String InvalidLogin = "Invalid1 Login Details";
         InvalidLogin.equals(element.getText());
     }
 
@@ -217,6 +217,7 @@ public class adactinSteps {
      WebElement element = webDriver.findElement(By.xpath("//a[@href='Logout.php']"));
         element.click();
         element = webDriver.findElement(By.className("reg_success"));
-        assertEquals("You have successfully logged out. [Click here to login again]", element.getText());
+        assertEquals("You have successfully logged out. Click here to login again", element.getText());
     }
+
 }

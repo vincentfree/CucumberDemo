@@ -37,4 +37,3 @@ Examples:
   | Location | Hotels       | Roomtype | NumberRooms | AdultsPerRoom |
   |Sydney    |Hotel Creek   |Standard  |1            |1              |
   |London    |Hotel Sunshine|Double    |2            |3              |
-
