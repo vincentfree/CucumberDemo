@@ -18,16 +18,16 @@ TC -103
   7. Enter check-out-date as in test data.
   8. Verify that application throws error message
   
-  URL: http://adactin.com/HotelApp/index.php
-  User:{test username}
-  Password:{test password}
+  - URL: http://adactin.com/HotelApp/index.php
+  - User:{test username}
+  - Password:{test password}
   
-  Location: Sydney
-  Hotel: Hotel Sunshine
-  Room type: Double
-  No-of-rooms:2
-  Check-in-date: today’s -5 date
-  Check-out date: today’s -3 date
-  System should report an error message ‘Enter Valid dates’
+  - Location: Sydney
+  - Hotel: Hotel Sunshine
+  - Room type: Double
+  - No-of-rooms:2
+  - Check-in-date: today’s -5 date
+  - Check-out date: today’s -3 date
+  - System should report an error message ‘Enter Valid dates’
 
 ------------------------------------------------------------------------------------
