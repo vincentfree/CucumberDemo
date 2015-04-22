@@ -203,7 +203,6 @@ public class adactinSteps {
 
         }
     }
-    //TODO make price function
     @And("^The price should be correct$")
     public void The_price_should_be_correct() throws Throwable {
         int price = 125*adults*no_rooms;
@@ -220,4 +219,44 @@ public class adactinSteps {
         assertEquals("You have successfully logged out. Click here to login again", element.getText());
     }
 
+    @Given("^I am on the Select Hotel page$")
+    public void I_am_on_the_Select_Hotel_page() throws Throwable {
+        webDriver.getCurrentUrl().equals("http://adactin.com/HotelAppBuild2/SelectHotel.php");
+        WebElement element = webDriver.findElement(By.className("login_title"));
+        assertEquals("Select Hotel",element.getText());
+    }
+
+    @When("^I select the first hotel$")
+    public void I_select_the_first_hotel() throws Throwable {
+        webDriver.findElement(By.id("radiobutton_0")).click();
+        webDriver.findElement(By.id("continue")).click();
+    }
+
+    @Then("^The \"([^\"]*)\" page should be shown$")
+    public void The_page_should_be_shown(String page) throws Throwable {
+        webDriver.getCurrentUrl().equals("http://adactin.com/HotelAppBuild2/BookHotel.php");
+        WebElement element = webDriver.findElement(By.xpath("/html/body/table[2]/tbody/tr[2]/td/form/table/tbody/tr[2]/td[text()]"));
+        assertEquals(page,element.getText());
+    }
+
+    @And("^The price should be the same as the previous screen$")
+    public void The_price_should_be_the_same_as_the_previous_screen() throws Throwable {
+        //TODO check hotel info and price
+        //WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        WebElement element;
+        //element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("Book A Hotel")));
+        for (Object object : results) {
+            if (object.toString().contains("Rooms")){
+                String newResult;
+                newResult = object.toString();
+                newResult.replace("Rooms","Room(s)");
+                System.out.println(newResult);
+            }
+            else {
+                element = webDriver.findElement(By.xpath("//input[@value='" + object.toString() + "']"));
+                System.out.println(element.getAttribute("value"));
+                assertEquals(element.getAttribute("value").toLowerCase(), object.toString().toLowerCase());
+            }
+        }
+    }
 }

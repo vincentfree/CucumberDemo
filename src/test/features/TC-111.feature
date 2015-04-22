@@ -26,7 +26,7 @@ No-of-adults:1
 No-of-children: 0
 Data should be same as selected in previous screen
 
-  Scenario: User should logout from the application.
+  Background: user logs in and navigates tru the first screen
     Given I am on the adactin site
     And I log in with my credentials
     And I am logged in
@@ -40,3 +40,9 @@ Data should be same as selected in previous screen
     And the day that I check out is "1" days from now
     Then The right hotel should be shown
     And The price should be correct
+
+  Scenario: Data should be same as selected in previous screen
+    Given I am on the Select Hotel page
+    When I select the first hotel
+    Then The "Book A Hotel" page should be shown
+    And The price should be the same as the previous screen
