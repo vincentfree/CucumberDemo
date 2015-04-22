@@ -3,7 +3,7 @@ Cucumber demo bij Atos test competence
 
 Casus 1
 
-naast de gegevens TC-101 en TC-102 gaan we nu TC-103 en 104 maken. 
+Naast de gegevens TC-101 en TC-102 gaan we nu TC-103 en 104 maken.
 
 ------------------------------------------------------------------------------------
 TC -103
