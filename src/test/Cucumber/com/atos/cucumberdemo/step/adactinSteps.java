@@ -142,14 +142,13 @@ public class adactinSteps {
 
     @And("^I select the number of rooms \"([^\"]*)\"$")
     public void I_select_the_number_of_rooms(String room) throws Throwable {
-        this.results.add(room+" Rooms");
+        this.results.add(room + " Rooms");
         this.no_rooms = Integer.parseInt(room);
         WebElement element = webDriver.findElement(By.id("room_nos"));
         if (room.equals("1") && (element.getAttribute("value").contains("One") || element.getAttribute("value").contains("1"))) {
 
             //System.out.println("number of rooms would be: "+room);
-        }
-        else {
+        } else {
             element.click();
             element.sendKeys(room);
         }
@@ -199,13 +198,14 @@ public class adactinSteps {
         for (Object object : results) {
             element = webDriver.findElement(By.xpath("//input[@value='" + object.toString() + "']"));
             System.out.println(element.getAttribute("value"));
-            assertEquals(element.getAttribute("value").toLowerCase(),object.toString().toLowerCase());
+            assertEquals(element.getAttribute("value").toLowerCase(), object.toString().toLowerCase());
 
         }
     }
+
     @And("^The price should be correct$")
     public void The_price_should_be_correct() throws Throwable {
-        int price = 125*adults*no_rooms;
+        int price = 125 * adults * no_rooms;
         WebElement element = webDriver.findElement(By.id("total_price_0"));
         assertEquals("AUD $ " + price + "", element.getAttribute("value"));
         System.out.println(element.getAttribute("value"));
@@ -213,7 +213,7 @@ public class adactinSteps {
 
     @And("^I want to logout and verify that I am logged out$")
     public void I_want_to_logout_and_verify_that_I_am_logged_out() throws Throwable {
-     WebElement element = webDriver.findElement(By.xpath("//a[@href='Logout.php']"));
+        WebElement element = webDriver.findElement(By.xpath("//a[@href='Logout.php']"));
         element.click();
         element = webDriver.findElement(By.className("reg_success"));
         assertEquals("You have successfully logged out. Click here to login again", element.getText());
@@ -223,7 +223,7 @@ public class adactinSteps {
     public void I_am_on_the_Select_Hotel_page() throws Throwable {
         webDriver.getCurrentUrl().equals("http://adactin.com/HotelAppBuild2/SelectHotel.php");
         WebElement element = webDriver.findElement(By.className("login_title"));
-        assertEquals("Select Hotel",element.getText());
+        assertEquals("Select Hotel", element.getText());
     }
 
     @When("^I select the first hotel$")
@@ -236,7 +236,7 @@ public class adactinSteps {
     public void The_page_should_be_shown(String page) throws Throwable {
         webDriver.getCurrentUrl().equals("http://adactin.com/HotelAppBuild2/BookHotel.php");
         WebElement element = webDriver.findElement(By.xpath("/html/body/table[2]/tbody/tr[2]/td/form/table/tbody/tr[2]/td[text()]"));
-        assertEquals(page,element.getText());
+        assertEquals(page, element.getText());
     }
 
     @And("^The price should be the same as the previous screen$")
@@ -246,13 +246,12 @@ public class adactinSteps {
         WebElement element;
         //element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("Book A Hotel")));
         for (Object object : results) {
-            if (object.toString().contains("Rooms")){
+            if (object.toString().contains("Rooms")) {
                 String newResult;
                 newResult = object.toString();
-                newResult.replace("Rooms","Room(s)");
+                newResult.replace("Rooms", "Room(s)");
                 System.out.println(newResult);
-            }
-            else {
+            } else {
                 element = webDriver.findElement(By.xpath("//input[@value='" + object.toString() + "']"));
                 System.out.println(element.getAttribute("value"));
                 assertEquals(element.getAttribute("value").toLowerCase(), object.toString().toLowerCase());
