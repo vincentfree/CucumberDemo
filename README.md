@@ -1,11 +1,14 @@
 # CucumberDemo
-Cucumber demo bij Atos test competence
+Cucumber demo - Masterclass Devops Foundation for Testers
 
-Casus 1
+Opdracht 1
 
-Naast de gegevens TC-101 en TC-102 gaan we nu TC-103 en 104 maken.
+Gegeven zijn TC-101 en TC-102
+We gaan nu aan de slag om TC-103 en TC-104 te maken.
+
 
 ------------------------------------------------------------------------------------
+
 TC -103
 
   To check if error is reported if check-out date field is in the past
@@ -55,7 +58,7 @@ TC-104
 - Room type: standard
 - No-of-rooms:1
 - Check-in-date: today’s date
-- Checko-ut-date:today+1 date
+- Checkout-date:today+1 date
 - No-of-adults:1
 - No-of-children: 0
 - Location displayed in Select Hotel should be the same as location selected in search hotel form.

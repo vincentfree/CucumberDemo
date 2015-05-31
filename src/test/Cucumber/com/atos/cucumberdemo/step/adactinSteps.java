@@ -1,6 +1,5 @@
 package com.atos.cucumberdemo.step;
 
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -26,14 +25,14 @@ import static org.junit.Assert.assertEquals;
 
 public class adactinSteps {
     private final WebDriver webDriver;
-    private Map<String,String> table;
+    //private Map<String,String> table;
     public adactinSteps(SharedDriver webDriver) {
         this.webDriver = webDriver;
-        //this.driver = new driver;
     }
 
     @Given("^I am on the adactin site$")
     public void I_am_on_the_adactin_site() throws Throwable {
+        webDriver.manage().window().maximize();
         webDriver.get("http://adactin.com/HotelAppBuild2/");
     }
 
