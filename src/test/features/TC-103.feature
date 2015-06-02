@@ -17,9 +17,9 @@ Feature: TC-103
   Hotel: Hotel Sunshine
   Room type: Double
   No-of-rooms:2
-  Check-in-date: todayâ€™s -5 date
-  Check-out date: todayâ€™s -3 date
-  System should report an error message â€˜Enter Valid datesâ€™
+  Check-in-date: today’s -5 date
+  Check-out date: today’s -3 date
+  System should report an error message ‘Enter Valid dates’
 
   Scenario: check if error is reported if check-out date field is in the past
     Given I am on the adactin site
@@ -32,4 +32,4 @@ Feature: TC-103
     And I select the amount of adults "1"
     And the day that I check in is "-5" days from now
     And the day that I check out is "-3" days from now
-    Then The system should report an error message â€˜Enter Valid datesâ€™
+    Then The system should report an error message ‘Enter Valid dates’
