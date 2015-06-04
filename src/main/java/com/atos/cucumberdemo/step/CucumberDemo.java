@@ -1,3 +1,4 @@
+package com.atos.cucumberdemo.step;
 /**
  * Created by Vincent Free on 21-3-2015.
  */

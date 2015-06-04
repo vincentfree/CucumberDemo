@@ -3,14 +3,15 @@ package com.atos.cucumberdemo.step;
 /**
  * Created by VincentFree on 27-3-2015.
  */
-    import cucumber.api.Scenario;
-    import cucumber.api.java.After;
-    import cucumber.api.java.Before;
-    import org.openqa.selenium.OutputType;
-    import org.openqa.selenium.WebDriver;
-    import org.openqa.selenium.WebDriverException;
-    import org.openqa.selenium.firefox.FirefoxDriver;
-    import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
     /**
      * <p>
