@@ -180,7 +180,7 @@ public class adactinSteps {
         }
     }
 
-    @Then("^The system should report an error message ‘Enter Valid dates’$")
+    @Then("^The system should report an error message 'Enter Valid dates'$")
     public void The_system_should_report_an_error_message_Enter_Valid_dates() throws Throwable {
         webDriver.findElement(By.id("Submit")).click();
         WebDriverWait wait = new WebDriverWait(webDriver, 10);

@@ -32,4 +32,4 @@ Feature: TC-103
     And I select the amount of adults "1"
     And the day that I check in is "-5" days from now
     And the day that I check out is "-3" days from now
-    Then The system should report an error message ‘Enter Valid dates’
+    Then The system should report an error message 'Enter Valid dates'
