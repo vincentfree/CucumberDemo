@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/features/",
-        plugin = {"html:target/cukes"})
-public class Run_Cucumber {
+        features = "src/test/resources/",
+        plugin = {"html:target/cukes,json"})
+public class RunCucumberTest {
 
 }
