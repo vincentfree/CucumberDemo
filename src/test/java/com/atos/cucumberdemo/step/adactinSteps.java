@@ -197,7 +197,7 @@ public class adactinSteps {
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("select_form")));
         for (Object object : results) {
             element = webDriver.findElement(By.xpath("//input[@value='" + object.toString() + "']"));
-            System.out.println(element.getAttribute("value"));
+            //System.out.println(element.getAttribute("value"));
             assertEquals(element.getAttribute("value").toLowerCase(), object.toString().toLowerCase());
 
         }
@@ -208,7 +208,7 @@ public class adactinSteps {
         int price = 125 * adults * no_rooms;
         WebElement element = webDriver.findElement(By.id("total_price_0"));
         assertEquals("AUD $ " + price + "", element.getAttribute("value"));
-        System.out.println(element.getAttribute("value"));
+        //System.out.println(element.getAttribute("value"));
     }
 
     @And("^I want to logout and verify that I am logged out$")
@@ -250,10 +250,10 @@ public class adactinSteps {
                 String newResult;
                 newResult = object.toString();
                 newResult.replace("Rooms", "Room(s)");
-                System.out.println(newResult);
+                //System.out.println(newResult);
             } else {
                 element = webDriver.findElement(By.xpath("//input[@value='" + object.toString() + "']"));
-                System.out.println(element.getAttribute("value"));
+                //System.out.println(element.getAttribute("value"));
                 assertEquals(element.getAttribute("value").toLowerCase(), object.toString().toLowerCase());
             }
         }
