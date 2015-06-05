@@ -5,3 +5,5 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber/
     - find . -type f -regex ".*/target/cucumber/.*cucumber" -exec cp {} $CIRCLE_TEST_REPORTS/cucumber/ \;
+    - mkdir -p $CIRCLE_TEST_REPORTS/webreport/
+    - find . -type f -regex ".*/target/cukes/" -exec cp {} $CIRCLE_TEST_REPORTS/webreport/ \;
