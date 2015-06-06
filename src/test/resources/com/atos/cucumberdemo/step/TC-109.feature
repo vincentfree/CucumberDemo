@@ -22,7 +22,7 @@ Feature: TC-109
   Hotel: Hotel Creek
   Room type: standard
   No-of-rooms:2
-  Check-in-date: today’s date
+  Check-in-date: today's date
   Check-out-date:today+1 date
   No-of-adults:1
   No-of-children:0

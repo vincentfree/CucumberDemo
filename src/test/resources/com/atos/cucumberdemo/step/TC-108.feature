@@ -1,7 +1,7 @@
 Feature: TC-108
 
   TC-108
-  To verify whether the total price (excl.GST) is calculated as “price per night * no. of nights* no of rooms”.
+  To verify whether the total price (excl.GST) is calculated as price per night * no. of nights* no of rooms.
   1. Launch hotel reservation application using URL as in test data.
   2. Login to the application using username and password as in test data.
   3. Select location as in test data.
@@ -21,7 +21,7 @@ Feature: TC-108
   Hotel: Hotel Creek
   Room type: standard
   No-of-rooms:2
-  Check-in-date: today’s date
+  Check-in-date: today's date
   Check-out-date:today+1 date
   No-of-adults:1
   No-of-children: 0

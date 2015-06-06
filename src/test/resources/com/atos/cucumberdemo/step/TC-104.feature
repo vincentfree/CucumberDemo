@@ -23,8 +23,8 @@ Feature: TC-104
   Hotel: Hotel Creek
   Room type: standard
   No-of-rooms:1
-  Check-in-date: today’s date
-  Checko-ut-date:today+1 date
+  Check-in-date: today's date
+  Check-out-date:today+1 date
   No-of-adults:1
   No-of-children: 0
   Location displayed in Select Hotel should be the same as location selected in search hotel form.

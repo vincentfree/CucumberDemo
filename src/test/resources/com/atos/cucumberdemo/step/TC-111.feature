@@ -20,7 +20,7 @@ Location: Sydney
 Hotel: hotel Creek
 Room type: standard
 No-of-rooms:2
-Check-in-date: today’s date
+Check-in-date: today's date
 Check-outdate:today+1 date
 No-of-adults:1
 No-of-children: 0
