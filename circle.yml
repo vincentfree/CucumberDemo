@@ -3,8 +3,8 @@ machine:
     version: oraclejdk8
 test:
   post:
-    - mkdir -p $CIRCLE_TEST_REPORTS/cucumber/ && mkdir -p $CIRCLE_TEST_REPORTS/cukedocter/
+    - mkdir -p $CIRCLE_TEST_REPORTS/cucumber/ && mkdir -p $CIRCLE_TEST_REPORTS/cukedoctor/
     - find . -type f -regex ".*/target/cucumber/.*cucumber" -exec cp {} $CIRCLE_TEST_REPORTS/cucumber/ \;
-    - cp -r ./target/cukedocter/ $CIRCLE_TEST_REPORTS/cukedocter/
+    - cp -r ./target/cukedoctor/ $CIRCLE_TEST_REPORTS/cukedoctor/
     - mkdir -p $CIRCLE_TEST_REPORTS/webreport/
     - cp -r ./target/cukes/ $CIRCLE_TEST_REPORTS/webreport/
