@@ -3,6 +3,7 @@ machine:
     version: oraclejdk8
 test:
   post:
+    - mvn cukedoctor:execute
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber/ && mkdir -p $CIRCLE_TEST_REPORTS/cukedoctor/
     - find . -type f -regex ".*/target/cucumber/.*cucumber" -exec cp {} $CIRCLE_TEST_REPORTS/cucumber/ \;
     #- find . -type f -regex ".*/target/cukedoctor/*.*" -exec cp {} $CIRCLE_TEST_REPORTS/cukedoctor/ \;
