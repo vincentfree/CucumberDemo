@@ -26,8 +26,8 @@
         <module name="CucumberDemo" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CucumberDemo" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="CucumberDemo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

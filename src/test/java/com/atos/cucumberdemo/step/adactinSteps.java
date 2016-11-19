@@ -9,6 +9,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,7 +27,9 @@ import static org.junit.Assert.assertEquals;
 
 
 public class adactinSteps {
-    private final WebDriver webDriver;
+    WebDriver webDriver = new SharedDriver();
+    private LoginPage loginPage = PageFactory.initElements(this.webDriver,LoginPage.class);
+    //private final WebDriver webDriver;
     private List<String> results = new ArrayList<String>();
     private int adults;
     private int no_rooms;
